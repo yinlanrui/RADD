@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_resnet18.json
+  dataset_name: resisc45
+  defend: ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_rmr
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+resisc45_resnet18_l1unstructure_0.6_ml2_rdway_oneshot_rmr_0.01
+Pretrained Victim: Accuracy 62.124, Loss 1.326
+victim iter 0 best model: Accuracy 60.623, Loss 1.669
+Total ml2 defend time: 414.221209526062s
+shadow 0 iter 0 best model: Accuracy 59.650, Loss 1.634
+shadow 1 iter 0 best model: Accuracy 60.272, Loss 1.490
+shadow 2 iter 0 best model: Accuracy 56.693, Loss 1.755
+shadow 3 iter 0 best model: Accuracy 60.000, Loss 1.637
+shadow 4 iter 0 best model: Accuracy 62.101, Loss 1.530
+Victim pruned model test accuracy: 59.900
+SAMIA attack accuracy: 69.865
+Conf attack accuracy: 58.229
+Entr attack accuracy: 55.616
+Mentr attack accuracy: 58.899
+Hconf attack accuracy: 60.409
+

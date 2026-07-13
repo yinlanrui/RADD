@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/location.json
+  dataset_name: location
+  defend: slide_ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 446
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: columnfc
+  num_cls: 30
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_swmr
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 1
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 15
+============================================================
+location_columnfc_l1unstructure_0.6_slide_ml2_rdway_oneshot_swmr_1-15_0.01
+Pretrained Victim: Accuracy 63.602, Loss 1.057
+victim iter 0 best model: Accuracy 61.125, Loss 1.264
+Total slide_ml2 defend time: 8.70670199394226s
+shadow 0 iter 0 best model: Accuracy 62.836, Loss 1.267
+shadow 1 iter 0 best model: Accuracy 60.147, Loss 1.335
+shadow 2 iter 0 best model: Accuracy 60.880, Loss 1.357
+shadow 3 iter 0 best model: Accuracy 63.325, Loss 1.159
+shadow 4 iter 0 best model: Accuracy 59.902, Loss 1.327
+Victim pruned model test accuracy: 64.736
+SAMIA attack accuracy: 82.172
+Conf attack accuracy: 71.974
+Entr attack accuracy: 63.984
+Mentr attack accuracy: 72.440
+Hconf attack accuracy: 72.748
+

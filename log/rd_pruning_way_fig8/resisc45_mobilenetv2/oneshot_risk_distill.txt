@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: risk_distill_swmr
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.2
+  epochs: 100
+  hard_high_weight: 0.0
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_risk_distill
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 100
+============================================================
+resisc45_mobilenetv2_l1unstructure_0.6_risk_distill_swmr_rdway_oneshot_risk_distill_5-100_0.01_rg1.0_dt3.0_dw1.0_hh0.0_en0.2_cap1_hr0.1
+Pretrained Victim: Accuracy 59.699, Loss 1.610
+victim iter 0 best model: Accuracy 46.459, Loss 2.274
+Total risk_distill_swmr defend time: 89.79523229598999s
+shadow 0 iter 0 best model: Accuracy 56.848, Loss 1.855
+shadow 1 iter 0 best model: Accuracy 52.996, Loss 1.870
+shadow 2 iter 0 best model: Accuracy 53.230, Loss 2.231
+shadow 3 iter 0 best model: Accuracy 54.397, Loss 1.784
+shadow 4 iter 0 best model: Accuracy 47.160, Loss 2.158
+Victim pruned model test accuracy: 45.611
+SAMIA attack accuracy: 67.844
+Conf attack accuracy: 54.132
+Entr attack accuracy: 50.961
+Mentr attack accuracy: 54.083
+Hconf attack accuracy: 54.296
+

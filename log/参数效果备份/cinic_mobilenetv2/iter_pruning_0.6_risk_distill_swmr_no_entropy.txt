@@ -1,0 +1,80 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_mobilenetv2.json
+  dataset_name: cinic
+  defend: risk_distill_swmr
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.0
+  epochs: 100
+  hard_high_weight: 0.0
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.7
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: no_entropy
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 100
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 900
+============================================================
+cinic_mobilenetv2_iter_pruning_0.6_risk_distill_swmr_no_entropy_100-900_0.01_rg1.0_dt3.0_dw1.0_hh0.0_en0.0_cap1_hr0.1
+Pretrained Victim: Accuracy 63.931, Loss 1.135
+victim iter 0 best model: Accuracy 63.559, Loss 1.334
+victim iter 1 best model: Accuracy 64.728, Loss 1.200
+victim iter 2 best model: Accuracy 64.915, Loss 1.320
+victim iter 3 best model: Accuracy 64.891, Loss 1.159
+victim iter 4 best model: Accuracy 64.703, Loss 1.280
+Total risk_distill_swmr defend time: 1220.3958563804626s
+shadow 0 iter 0 best model: Accuracy 61.745, Loss 1.196
+shadow 0 iter 1 best model: Accuracy 63.837, Loss 1.209
+shadow 0 iter 2 best model: Accuracy 64.303, Loss 1.188
+shadow 0 iter 3 best model: Accuracy 64.458, Loss 1.191
+shadow 0 iter 4 best model: Accuracy 64.474, Loss 1.222
+shadow 1 iter 0 best model: Accuracy 62.963, Loss 1.203
+shadow 1 iter 1 best model: Accuracy 62.693, Loss 1.274
+shadow 1 iter 2 best model: Accuracy 62.758, Loss 1.353
+shadow 1 iter 3 best model: Accuracy 63.633, Loss 1.282
+shadow 1 iter 4 best model: Accuracy 63.208, Loss 1.284
+shadow 2 iter 0 best model: Accuracy 60.904, Loss 1.251
+shadow 2 iter 1 best model: Accuracy 63.053, Loss 1.122
+shadow 2 iter 2 best model: Accuracy 62.464, Loss 1.205
+shadow 2 iter 3 best model: Accuracy 63.804, Loss 1.168
+shadow 2 iter 4 best model: Accuracy 63.257, Loss 1.221
+shadow 3 iter 0 best model: Accuracy 61.745, Loss 1.149
+shadow 3 iter 1 best model: Accuracy 63.363, Loss 1.069
+shadow 3 iter 2 best model: Accuracy 64.090, Loss 1.119
+shadow 3 iter 3 best model: Accuracy 63.755, Loss 1.242
+shadow 3 iter 4 best model: Accuracy 63.428, Loss 1.142
+shadow 4 iter 0 best model: Accuracy 61.958, Loss 1.180
+shadow 4 iter 1 best model: Accuracy 63.306, Loss 1.245
+shadow 4 iter 2 best model: Accuracy 63.093, Loss 1.176
+shadow 4 iter 3 best model: Accuracy 62.995, Loss 1.203
+shadow 4 iter 4 best model: Accuracy 63.379, Loss 1.319
+Victim pruned model test accuracy: 63.935
+SAMIA attack accuracy: 63.030
+Conf attack accuracy: 53.481
+Entr attack accuracy: 51.663
+Mentr attack accuracy: 53.416
+Hconf attack accuracy: 53.432
+

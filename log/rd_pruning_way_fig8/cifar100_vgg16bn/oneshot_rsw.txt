@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cifar100_vgg16.json
+  dataset_name: cifar100
+  defend: slide_re
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: vgg16bn
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_rsw
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 50
+============================================================
+cifar100_vgg16bn_l1unstructure_0.6_slide_re_rdway_oneshot_rsw_5-50_0.01
+Pretrained Victim: Accuracy 34.836, Loss 3.250
+victim iter 0 best model: Accuracy 36.235, Loss 3.571
+Total slide_re defend time: 20.990365982055664s
+shadow 0 iter 0 best model: Accuracy 31.106, Loss 3.279
+shadow 1 iter 0 best model: Accuracy 35.718, Loss 3.717
+shadow 2 iter 0 best model: Accuracy 35.412, Loss 3.517
+shadow 3 iter 0 best model: Accuracy 35.859, Loss 3.339
+shadow 4 iter 0 best model: Accuracy 35.529, Loss 3.696
+Victim pruned model test accuracy: 35.297
+SAMIA attack accuracy: 81.057
+Conf attack accuracy: 71.418
+Entr attack accuracy: 61.586
+Mentr attack accuracy: 71.478
+Hconf attack accuracy: 71.419
+

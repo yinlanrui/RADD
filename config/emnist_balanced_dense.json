@@ -1,0 +1,11 @@
+{
+    "dataset_name": "emnist_balanced",
+    "model_name": "densenet121",
+    "epochs": 100,
+    "num_cls": 47,
+    "input_dim": 3,
+    "image_size": 32,
+    "optimizer": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0005
+}

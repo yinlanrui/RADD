@@ -1,0 +1,11 @@
+{
+    "dataset_name": "oxford_pet",
+    "model_name": "mobilenetv2",
+    "epochs": 100,
+    "num_cls": 37,
+    "input_dim": 3,
+    "image_size": 64,
+    "optimizer": "adam",
+    "lr": 0.001,
+    "weight_decay": 5e-4
+}

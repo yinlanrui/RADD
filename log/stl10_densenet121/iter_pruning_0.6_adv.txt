@@ -1,0 +1,60 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/stl10_dense.json
+  dataset_name: stl10
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 96
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: densenet121
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+stl10_densenet121_iter_pruning_0.6_adv_2.0_0.0005
+Pretrained Victim: Accuracy 52.727, Loss 1.385
+victim iter 0 best model: Accuracy 45.134, Loss 1.911
+victim iter 1 best model: Accuracy 46.631, Loss 1.464
+victim iter 2 best model: Accuracy 49.804, Loss 1.657
+victim iter 3 best model: Accuracy 45.704, Loss 1.648
+victim iter 4 best model: Accuracy 49.376, Loss 1.563
+Total adv defend time: 579.9629797935486s
+shadow 0 iter 0 best model: Accuracy 53.832, Loss 1.548
+shadow 0 iter 1 best model: Accuracy 55.651, Loss 1.569
+shadow 0 iter 2 best model: Accuracy 54.831, Loss 1.667
+shadow 0 iter 3 best model: Accuracy 58.966, Loss 1.339
+shadow 0 iter 4 best model: Accuracy 54.439, Loss 1.512
+shadow 1 iter 0 best model: Accuracy 57.611, Loss 2.386
+shadow 1 iter 1 best model: Accuracy 58.930, Loss 1.566
+shadow 1 iter 2 best model: Accuracy 58.004, Loss 1.439
+shadow 1 iter 3 best model: Accuracy 56.150, Loss 1.717
+shadow 1 iter 4 best model: Accuracy 57.754, Loss 1.394
+shadow 2 iter 0 best model: Accuracy 52.121, Loss 1.573
+shadow 2 iter 1 best model: Accuracy 54.118, Loss 1.438
+shadow 2 iter 2 best model: Accuracy 54.581, Loss 1.631

@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_rmr
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+resisc45_mobilenetv2_l1unstructure_0.6_ml2_rdway_oneshot_rmr_0.01
+Pretrained Victim: Accuracy 59.699, Loss 1.610
+victim iter 0 best model: Accuracy 61.089, Loss 1.716
+Total ml2 defend time: 183.7057752609253s
+shadow 0 iter 0 best model: Accuracy 60.934, Loss 1.780
+shadow 1 iter 0 best model: Accuracy 59.728, Loss 1.612
+shadow 2 iter 0 best model: Accuracy 60.272, Loss 1.935
+shadow 3 iter 0 best model: Accuracy 60.156, Loss 1.654
+shadow 4 iter 0 best model: Accuracy 58.560, Loss 1.653
+Victim pruned model test accuracy: 59.539
+SAMIA attack accuracy: 70.790
+Conf attack accuracy: 58.198
+Entr attack accuracy: 54.424
+Mentr attack accuracy: 58.279
+Hconf attack accuracy: 58.839
+

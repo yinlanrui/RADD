@@ -1,0 +1,56 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_dense.json
+  dataset_name: cinic
+  defend: 
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 50
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: densenet121
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: l1unstructure
+  risk_gamma: 1.0
+  run_tag: rdway_oneshot_base
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+cinic_densenet121_l1unstructure_0.6_rdway_oneshot_base_0.0005
+Pretrained Victim: Accuracy 68.523, Loss 1.070
+victim iter 0 best model: Accuracy 68.935, Loss 1.355
+Total Base defend time: 415.3850393295288s
+shadow 0 iter 0 best model: Accuracy 68.421, Loss 1.320
+shadow 1 iter 0 best model: Accuracy 68.265, Loss 1.252
+shadow 2 iter 0 best model: Accuracy 68.829, Loss 1.197
+shadow 3 iter 0 best model: Accuracy 68.535, Loss 1.371
+shadow 4 iter 0 best model: Accuracy 68.306, Loss 1.408
+Victim pruned model test accuracy: 68.540
+SAMIA attack accuracy: 71.289
+Conf attack accuracy: 64.489
+Entr attack accuracy: 59.247
+Mentr attack accuracy: 64.392
+Hconf attack accuracy: 64.381
+

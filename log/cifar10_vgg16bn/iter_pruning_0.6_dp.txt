@@ -1,0 +1,40 @@
+cifar10_vgg16bn_iter_pruning_0.6_dp_0.1_0.0005
+Pretrained Victim: Accuracy 77.297, Loss 0.769
+victim iter 0 best model: Accuracy 79.529, Loss 0.711
+victim iter 1 best model: Accuracy 79.341, Loss 0.708
+victim iter 2 best model: Accuracy 78.165, Loss 0.751
+victim iter 3 best model: Accuracy 75.906, Loss 0.816
+victim iter 4 best model: Accuracy 68.188, Loss 1.118
+Total dp defend time: 92.01128387451172s
+shadow 0 iter 0 best model: Accuracy 79.553, Loss 0.692
+shadow 0 iter 1 best model: Accuracy 79.176, Loss 0.703
+shadow 0 iter 2 best model: Accuracy 78.424, Loss 0.748
+shadow 0 iter 3 best model: Accuracy 75.082, Loss 0.812
+shadow 0 iter 4 best model: Accuracy 68.094, Loss 1.057
+shadow 1 iter 0 best model: Accuracy 80.729, Loss 0.714
+shadow 1 iter 1 best model: Accuracy 80.471, Loss 0.713
+shadow 1 iter 2 best model: Accuracy 78.800, Loss 0.752
+shadow 1 iter 3 best model: Accuracy 76.024, Loss 0.847
+shadow 1 iter 4 best model: Accuracy 70.824, Loss 1.034
+shadow 2 iter 0 best model: Accuracy 80.471, Loss 0.733
+shadow 2 iter 1 best model: Accuracy 80.353, Loss 0.737
+shadow 2 iter 2 best model: Accuracy 79.529, Loss 0.753
+shadow 2 iter 3 best model: Accuracy 78.118, Loss 0.798
+shadow 2 iter 4 best model: Accuracy 70.118, Loss 1.064
+shadow 3 iter 0 best model: Accuracy 79.647, Loss 0.711
+shadow 3 iter 1 best model: Accuracy 79.435, Loss 0.724
+shadow 3 iter 2 best model: Accuracy 78.165, Loss 0.764
+shadow 3 iter 3 best model: Accuracy 75.082, Loss 0.860
+shadow 3 iter 4 best model: Accuracy 67.976, Loss 1.077
+shadow 4 iter 0 best model: Accuracy 81.059, Loss 0.745
+shadow 4 iter 1 best model: Accuracy 80.894, Loss 0.753
+shadow 4 iter 2 best model: Accuracy 79.529, Loss 0.798
+shadow 4 iter 3 best model: Accuracy 76.776, Loss 0.918
+shadow 4 iter 4 best model: Accuracy 68.941, Loss 1.293
+Victim pruned model test accuracy: 68.242
+SAMIA attack accuracy: 73.220
+Conf attack accuracy: 54.205
+Entr attack accuracy: 51.557
+Mentr attack accuracy: 54.142
+Hconf attack accuracy: 54.067
+

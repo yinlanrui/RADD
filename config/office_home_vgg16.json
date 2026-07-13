@@ -1,0 +1,11 @@
+{
+    "dataset_name": "office_home",
+    "model_name": "vgg16bn",
+    "epochs": 100,
+    "num_cls": 65,
+    "input_dim": 3,
+    "image_size": 64,
+    "optimizer": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0005
+}

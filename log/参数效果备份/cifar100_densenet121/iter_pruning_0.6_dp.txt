@@ -1,0 +1,79 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cifar100_dense.json
+  dataset_name: cifar100
+  defend: dp
+  defend_arg: 0.1
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: densenet121
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+cifar100_densenet121_iter_pruning_0.6_dp_0.1_0.0005
+Pretrained Victim: Accuracy 46.485, Loss 2.102
+victim iter 0 best model: Accuracy 47.153, Loss 2.053
+victim iter 1 best model: Accuracy 47.035, Loss 2.082
+victim iter 2 best model: Accuracy 39.600, Loss 2.525
+victim iter 3 best model: Accuracy 22.212, Loss 3.808
+victim iter 4 best model: Accuracy 7.576, Loss 5.372
+Total dp defend time: 81.2177677154541s
+shadow 0 iter 0 best model: Accuracy 46.894, Loss 2.273
+shadow 0 iter 1 best model: Accuracy 46.282, Loss 2.297
+shadow 0 iter 2 best model: Accuracy 39.741, Loss 2.659
+shadow 0 iter 3 best model: Accuracy 32.447, Loss 3.019
+shadow 0 iter 4 best model: Accuracy 14.400, Loss 4.504
+shadow 1 iter 0 best model: Accuracy 47.412, Loss 2.322
+shadow 1 iter 1 best model: Accuracy 47.388, Loss 2.311
+shadow 1 iter 2 best model: Accuracy 44.988, Loss 2.405
+shadow 1 iter 3 best model: Accuracy 27.600, Loss 3.490
+shadow 1 iter 4 best model: Accuracy 9.482, Loss 5.373
+shadow 2 iter 0 best model: Accuracy 46.447, Loss 2.354
+shadow 2 iter 1 best model: Accuracy 44.776, Loss 2.415
+shadow 2 iter 2 best model: Accuracy 37.953, Loss 2.821
+shadow 2 iter 3 best model: Accuracy 19.882, Loss 4.686
+shadow 2 iter 4 best model: Accuracy 9.671, Loss 6.180
+shadow 3 iter 0 best model: Accuracy 47.812, Loss 2.439
+shadow 3 iter 1 best model: Accuracy 47.600, Loss 2.477
+shadow 3 iter 2 best model: Accuracy 43.647, Loss 2.648
+shadow 3 iter 3 best model: Accuracy 25.929, Loss 3.802
+shadow 3 iter 4 best model: Accuracy 8.800, Loss 6.229
+shadow 4 iter 0 best model: Accuracy 47.247, Loss 2.373
+shadow 4 iter 1 best model: Accuracy 46.729, Loss 2.417
+shadow 4 iter 2 best model: Accuracy 38.965, Loss 2.910
+shadow 4 iter 3 best model: Accuracy 26.306, Loss 3.733
+shadow 4 iter 4 best model: Accuracy 16.824, Loss 4.388
+Victim pruned model test accuracy: 7.297
+SAMIA attack accuracy: 71.925
+Conf attack accuracy: 52.180
+Entr attack accuracy: 49.751
+Mentr attack accuracy: 51.979
+Hconf attack accuracy: 52.204
+

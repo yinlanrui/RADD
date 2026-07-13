@@ -1,0 +1,13 @@
+{
+    "dataset_name": "stl10",
+    "model_name": "vgg16bn",
+    "epochs": 200,
+    "early_stop": 20,
+    "num_cls": 10,
+    "input_dim": 3,
+    "image_size": 96,
+    "optimizer": "sgd",
+    "lr": 0.01,
+    "weight_decay": 0.0005,
+    "batch_size": 128
+}

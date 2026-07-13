@@ -1,0 +1,17 @@
+dataset,arch,method_key,method,acc,samia,conf,entr,mentr,hconf,avg_attack,path
+cinic,resnet18,full,Full,60.783,63.028,53.886,52.27,53.876,53.757,55.3634,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_resnet18\iter_pruning_0.6_risk_distill_swmr.txt
+cinic,resnet18,no_budget,w/o Budget,60.922,63.031,54.331,52.313,54.467,54.407,55.709799999999994,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_resnet18\iter_pruning_0.6_risk_distill_swmr_no_budget.txt
+cinic,resnet18,no_kd,w/o KD,56.397,63.025,53.972,52.955,53.959,53.839,55.55,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_resnet18\iter_pruning_0.6_risk_distill_swmr_no_kd.txt
+cinic,resnet18,no_entropy,w/o Entropy,60.787,63.022,54.332,53.085,54.501,54.382,55.8644,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_resnet18\iter_pruning_0.6_risk_distill_swmr_no_entropy.txt
+cinic,vgg16bn,full,Full,64.663,62.719,53.293,51.181,53.249,53.246,54.7376,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_vgg16bn\iter_pruning_0.6_risk_distill_swmr.txt
+cinic,vgg16bn,no_budget,w/o Budget,63.573,62.742,53.468,51.436,53.445,53.228,54.863800000000005,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_vgg16bn\iter_pruning_0.6_risk_distill_swmr_no_budget.txt
+cinic,vgg16bn,no_kd,w/o KD,60.311,62.927,52.817,51.253,52.765,52.727,54.4978,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_vgg16bn\iter_pruning_0.6_risk_distill_swmr_no_kd.txt
+cinic,vgg16bn,no_entropy,w/o Entropy,63.952,62.663,53.243,51.116,53.411,53.564,54.799400000000006,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_vgg16bn\iter_pruning_0.6_risk_distill_swmr_no_entropy.txt
+cinic,densenet121,full,Full,66.263,63.003,53.591,52.133,53.609,53.544,55.176,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_densenet121\iter_pruning_0.6_risk_distill_swmr.txt
+cinic,densenet121,no_budget,w/o Budget,66.932,63.03,53.562,51.873,53.576,53.506,55.10940000000001,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_densenet121\iter_pruning_0.6_risk_distill_swmr_no_budget.txt
+cinic,densenet121,no_kd,w/o KD,61.831,63.028,53.051,52.196,53.017,53.054,54.8692,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_densenet121\iter_pruning_0.6_risk_distill_swmr_no_kd.txt
+cinic,densenet121,no_entropy,w/o Entropy,66.582,62.996,53.569,52.371,53.673,53.391,55.2,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_densenet121\iter_pruning_0.6_risk_distill_swmr_no_entropy.txt
+cinic,mobilenetv2,full,Full,63.573,63.027,53.613,51.709,53.644,53.198,55.0382,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_mobilenetv2\iter_pruning_0.6_risk_distill_swmr.txt
+cinic,mobilenetv2,no_budget,w/o Budget,63.43,63.021,53.312,51.551,53.176,53.24,54.86,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_mobilenetv2\iter_pruning_0.6_risk_distill_swmr_no_budget.txt
+cinic,mobilenetv2,no_kd,w/o KD,60.122,63.025,53.082,51.698,53.07,53.033,54.781600000000005,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_mobilenetv2\iter_pruning_0.6_risk_distill_swmr_no_kd.txt
+cinic,mobilenetv2,no_entropy,w/o Entropy,63.935,63.03,53.481,51.663,53.416,53.432,55.0044,D:\Users\Administrator\PycharmProjects\WeMeM2\WeMeM-main\log\cinic_mobilenetv2\iter_pruning_0.6_risk_distill_swmr_no_entropy.txt

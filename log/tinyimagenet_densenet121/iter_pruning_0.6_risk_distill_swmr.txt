@@ -1,0 +1,40 @@
+tinyimagenet_densenet121_iter_pruning_0.6_risk_distill_swmr_5-50_0.01_rg1.0_dt3.0_dw1.0_hh0.0_en0.2_cap1_hr0.1
+Pretrained Victim: Accuracy 39.818, Loss 2.789
+victim iter 0 best model: Accuracy 39.294, Loss 3.491
+victim iter 1 best model: Accuracy 34.118, Loss 3.050
+victim iter 2 best model: Accuracy 33.255, Loss 3.231
+victim iter 3 best model: Accuracy 32.314, Loss 3.102
+victim iter 4 best model: Accuracy 32.471, Loss 3.178
+Total risk_distill_swmr defend time: 1102.06684923172s
+shadow 0 iter 0 best model: Accuracy 37.235, Loss 2.847
+shadow 0 iter 1 best model: Accuracy 33.843, Loss 3.079
+shadow 0 iter 2 best model: Accuracy 33.647, Loss 3.354
+shadow 0 iter 3 best model: Accuracy 31.961, Loss 3.095
+shadow 0 iter 4 best model: Accuracy 31.627, Loss 3.149
+shadow 1 iter 0 best model: Accuracy 37.176, Loss 3.097
+shadow 1 iter 1 best model: Accuracy 34.745, Loss 3.100
+shadow 1 iter 2 best model: Accuracy 33.765, Loss 2.992
+shadow 1 iter 3 best model: Accuracy 32.333, Loss 3.165
+shadow 1 iter 4 best model: Accuracy 32.392, Loss 3.127
+shadow 2 iter 0 best model: Accuracy 36.765, Loss 2.984
+shadow 2 iter 1 best model: Accuracy 31.902, Loss 3.153
+shadow 2 iter 2 best model: Accuracy 31.431, Loss 3.183
+shadow 2 iter 3 best model: Accuracy 31.059, Loss 3.202
+shadow 2 iter 4 best model: Accuracy 31.902, Loss 3.235
+shadow 3 iter 0 best model: Accuracy 34.902, Loss 2.965
+shadow 3 iter 1 best model: Accuracy 32.569, Loss 3.149
+shadow 3 iter 2 best model: Accuracy 31.941, Loss 3.172
+shadow 3 iter 3 best model: Accuracy 31.804, Loss 3.214
+shadow 3 iter 4 best model: Accuracy 32.216, Loss 3.197
+shadow 4 iter 0 best model: Accuracy 38.118, Loss 2.946
+shadow 4 iter 1 best model: Accuracy 34.824, Loss 2.939
+shadow 4 iter 2 best model: Accuracy 32.098, Loss 3.071
+shadow 4 iter 3 best model: Accuracy 32.216, Loss 3.284
+shadow 4 iter 4 best model: Accuracy 33.098, Loss 3.192
+Victim pruned model test accuracy: 32.414
+SAMIA attack accuracy: 81.967
+Conf attack accuracy: 55.000
+Entr attack accuracy: 52.604
+Mentr attack accuracy: 55.206
+Hconf attack accuracy: 54.787
+

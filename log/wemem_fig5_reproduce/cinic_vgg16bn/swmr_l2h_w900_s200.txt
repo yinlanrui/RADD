@@ -1,0 +1,48 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_vgg16.json
+  dataset_name: cinic
+  defend: slide_re_ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.7
+  mix_alpha: 0.2
+  model_name: vgg16bn
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: fig5_swmr_l2h_w900_s200
+  seed: 7
+  shadow_num: 0
+  soft_smoothing: 0.15
+  stride: 200
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 900
+============================================================
+cinic_vgg16bn_iter_pruning_0.6_slide_re_ml2_fig5_swmr_l2h_w900_s200_200-900_0.01
+Pretrained Victim: Accuracy 66.111, Loss 0.997
+victim iter 0 best model: Accuracy 64.613, Loss 1.695
+victim iter 1 best model: Accuracy 65.136, Loss 1.367
+victim iter 2 best model: Accuracy 65.128, Loss 2.260
+victim iter 3 best model: Accuracy 65.210, Loss 2.549
+victim iter 4 best model: Accuracy 64.450, Loss 1.289
+Total slide_re_ml2 defend time: 1117.69952917099s

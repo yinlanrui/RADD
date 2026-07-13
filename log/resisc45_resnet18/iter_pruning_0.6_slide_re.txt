@@ -1,0 +1,159 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_resnet18.json
+  dataset_name: resisc45
+  defend: slide_re
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: 100
+============================================================
+resisc45_resnet18_iter_pruning_0.6_slide_re_5-100_0.0005
+Pretrained Victim: Accuracy 62.104, Loss 1.326
+victim iter 0 best model: Accuracy 64.708, Loss 1.676
+victim iter 1 best model: Accuracy 66.304, Loss 1.660
+victim iter 2 best model: Accuracy 66.070, Loss 1.668
+victim iter 3 best model: Accuracy 67.510, Loss 1.651
+victim iter 4 best model: Accuracy 68.755, Loss 1.804
+Total slide_re defend time: 433.5465316772461s
+shadow 0 iter 0 best model: Accuracy 61.167, Loss 1.707
+shadow 0 iter 1 best model: Accuracy 65.798, Loss 1.715
+shadow 0 iter 2 best model: Accuracy 64.708, Loss 1.534
+shadow 0 iter 3 best model: Accuracy 66.498, Loss 1.699
+shadow 0 iter 4 best model: Accuracy 67.743, Loss 1.487
+shadow 1 iter 0 best model: Accuracy 63.541, Loss 1.643
+shadow 1 iter 1 best model: Accuracy 70.078, Loss 1.602
+shadow 1 iter 2 best model: Accuracy 68.949, Loss 1.434
+shadow 1 iter 3 best model: Accuracy 67.237, Loss 1.380
+shadow 1 iter 4 best model: Accuracy 68.288, Loss 1.652
+shadow 2 iter 0 best model: Accuracy 62.179, Loss 1.951
+shadow 2 iter 1 best model: Accuracy 65.953, Loss 1.528
+shadow 2 iter 2 best model: Accuracy 67.276, Loss 1.556
+shadow 2 iter 3 best model: Accuracy 67.160, Loss 1.782
+shadow 2 iter 4 best model: Accuracy 68.755, Loss 1.709
+shadow 3 iter 0 best model: Accuracy 63.113, Loss 1.610
+shadow 3 iter 1 best model: Accuracy 69.183, Loss 1.618
+shadow 3 iter 2 best model: Accuracy 67.626, Loss 1.803
+shadow 3 iter 3 best model: Accuracy 66.887, Loss 1.630
+shadow 3 iter 4 best model: Accuracy 66.770, Loss 1.522
+shadow 4 iter 0 best model: Accuracy 64.047, Loss 1.498
+shadow 4 iter 1 best model: Accuracy 66.576, Loss 1.703
+shadow 4 iter 2 best model: Accuracy 66.420, Loss 1.653
+shadow 4 iter 3 best model: Accuracy 66.926, Loss 1.735
+shadow 4 iter 4 best model: Accuracy 68.249, Loss 1.695
+Victim pruned model test accuracy: 66.914
+SAMIA attack accuracy: 68.690
+Conf attack accuracy: 62.513
+Entr attack accuracy: 61.966
+Mentr attack accuracy: 62.530
+Hconf attack accuracy: 62.893
+
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_resnet18.json
+  dataset_name: resisc45
+  defend: slide_re
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: 
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 100
+============================================================
+resisc45_resnet18_iter_pruning_0.6_slide_re_5-100_0.01
+Pretrained Victim: Accuracy 62.104, Loss 1.326
+victim iter 0 best model: Accuracy 61.946, Loss 1.580
+victim iter 1 best model: Accuracy 64.553, Loss 1.463
+victim iter 2 best model: Accuracy 66.965, Loss 1.501
+victim iter 3 best model: Accuracy 67.782, Loss 1.963
+victim iter 4 best model: Accuracy 68.872, Loss 1.581
+Total slide_re defend time: 498.003276348114s
+shadow 0 iter 0 best model: Accuracy 63.658, Loss 1.589
+shadow 0 iter 1 best model: Accuracy 68.833, Loss 1.476
+shadow 0 iter 2 best model: Accuracy 67.121, Loss 1.510
+shadow 0 iter 3 best model: Accuracy 68.327, Loss 1.498
+shadow 0 iter 4 best model: Accuracy 67.938, Loss 1.368
+shadow 1 iter 0 best model: Accuracy 64.786, Loss 1.813
+shadow 1 iter 1 best model: Accuracy 68.911, Loss 1.708
+shadow 1 iter 2 best model: Accuracy 70.661, Loss 1.596
+shadow 1 iter 3 best model: Accuracy 66.887, Loss 1.649
+shadow 1 iter 4 best model: Accuracy 71.089, Loss 1.719
+shadow 2 iter 0 best model: Accuracy 63.735, Loss 1.558
+shadow 2 iter 1 best model: Accuracy 64.397, Loss 1.458
+shadow 2 iter 2 best model: Accuracy 67.315, Loss 1.470
+shadow 2 iter 3 best model: Accuracy 68.288, Loss 1.400
+shadow 2 iter 4 best model: Accuracy 69.533, Loss 2.034
+shadow 3 iter 0 best model: Accuracy 64.786, Loss 1.778
+shadow 3 iter 1 best model: Accuracy 69.105, Loss 1.805
+shadow 3 iter 2 best model: Accuracy 66.809, Loss 1.555
+shadow 3 iter 3 best model: Accuracy 67.432, Loss 1.859
+shadow 3 iter 4 best model: Accuracy 68.521, Loss 1.587
+shadow 4 iter 0 best model: Accuracy 65.603, Loss 1.576
+shadow 4 iter 1 best model: Accuracy 68.716, Loss 1.219
+shadow 4 iter 2 best model: Accuracy 66.187, Loss 1.566
+shadow 4 iter 3 best model: Accuracy 67.510, Loss 2.168
+shadow 4 iter 4 best model: Accuracy 67.354, Loss 1.444
+Victim pruned model test accuracy: 66.854
+NN attack accuracy 69.443
+Top3-NN Attack Accuracy 69.44274341702388
+NNCl Attack Accuracy 68.59154929577464
+
+

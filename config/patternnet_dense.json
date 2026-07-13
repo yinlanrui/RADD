@@ -1,0 +1,11 @@
+{
+    "dataset_name": "patternnet",
+    "model_name": "densenet121",
+    "epochs": 100,
+    "num_cls": 38,
+    "input_dim": 3,
+    "image_size": 64,
+    "optimizer": "adam",
+    "lr": 0.001,
+    "weight_decay": 0.0005
+}

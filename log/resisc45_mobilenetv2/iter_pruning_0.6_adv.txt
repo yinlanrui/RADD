@@ -1,0 +1,159 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+resisc45_mobilenetv2_iter_pruning_0.6_adv_2.0_0.0005
+Pretrained Victim: Accuracy 59.719, Loss 1.610
+victim iter 0 best model: Accuracy 55.953, Loss 2.300
+victim iter 1 best model: Accuracy 54.630, Loss 2.065
+victim iter 2 best model: Accuracy 54.086, Loss 1.963
+victim iter 3 best model: Accuracy 55.837, Loss 1.696
+victim iter 4 best model: Accuracy 55.058, Loss 1.630
+Total adv defend time: 727.9085283279419s
+shadow 0 iter 0 best model: Accuracy 61.440, Loss 3.622
+shadow 0 iter 1 best model: Accuracy 58.794, Loss 1.718
+shadow 0 iter 2 best model: Accuracy 57.160, Loss 1.696
+shadow 0 iter 3 best model: Accuracy 58.833, Loss 1.469
+shadow 0 iter 4 best model: Accuracy 55.681, Loss 1.617
+shadow 1 iter 0 best model: Accuracy 59.533, Loss 2.238
+shadow 1 iter 1 best model: Accuracy 57.510, Loss 1.838
+shadow 1 iter 2 best model: Accuracy 57.782, Loss 1.639
+shadow 1 iter 3 best model: Accuracy 54.825, Loss 1.615
+shadow 1 iter 4 best model: Accuracy 52.374, Loss 1.769
+shadow 2 iter 0 best model: Accuracy 57.393, Loss 2.129
+shadow 2 iter 1 best model: Accuracy 57.626, Loss 1.787
+shadow 2 iter 2 best model: Accuracy 60.195, Loss 1.673
+shadow 2 iter 3 best model: Accuracy 59.416, Loss 1.495
+shadow 2 iter 4 best model: Accuracy 54.436, Loss 1.594
+shadow 3 iter 0 best model: Accuracy 59.105, Loss 2.169
+shadow 3 iter 1 best model: Accuracy 57.198, Loss 1.910
+shadow 3 iter 2 best model: Accuracy 56.148, Loss 1.627
+shadow 3 iter 3 best model: Accuracy 57.743, Loss 1.510
+shadow 3 iter 4 best model: Accuracy 53.191, Loss 1.680
+shadow 4 iter 0 best model: Accuracy 57.471, Loss 1.861
+shadow 4 iter 1 best model: Accuracy 53.774, Loss 2.312
+shadow 4 iter 2 best model: Accuracy 52.490, Loss 1.920
+shadow 4 iter 3 best model: Accuracy 53.619, Loss 1.709
+shadow 4 iter 4 best model: Accuracy 49.066, Loss 1.798
+Victim pruned model test accuracy: 55.291
+SAMIA attack accuracy: 69.565
+Conf attack accuracy: 55.875
+Entr attack accuracy: 52.516
+Mentr attack accuracy: 56.009
+Hconf attack accuracy: 56.057
+
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: 
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+resisc45_mobilenetv2_iter_pruning_0.6_adv_2.0_0.01
+Pretrained Victim: Accuracy 59.699, Loss 1.610
+victim iter 0 best model: Accuracy 56.265, Loss 2.407
+victim iter 1 best model: Accuracy 53.969, Loss 2.085
+victim iter 2 best model: Accuracy 54.202, Loss 1.835
+victim iter 3 best model: Accuracy 54.436, Loss 1.711
+victim iter 4 best model: Accuracy 54.475, Loss 1.624
+Total adv defend time: 666.5821526050568s
+shadow 0 iter 0 best model: Accuracy 62.101, Loss 1.872
+shadow 0 iter 1 best model: Accuracy 56.265, Loss 2.370
+shadow 0 iter 2 best model: Accuracy 56.498, Loss 1.777
+shadow 0 iter 3 best model: Accuracy 59.533, Loss 1.526
+shadow 0 iter 4 best model: Accuracy 53.696, Loss 1.655
+shadow 1 iter 0 best model: Accuracy 57.121, Loss 2.124
+shadow 1 iter 1 best model: Accuracy 56.342, Loss 1.802
+shadow 1 iter 2 best model: Accuracy 57.821, Loss 1.570
+shadow 1 iter 3 best model: Accuracy 60.000, Loss 1.416
+shadow 1 iter 4 best model: Accuracy 54.747, Loss 1.600
+shadow 2 iter 0 best model: Accuracy 60.195, Loss 1.962
+shadow 2 iter 1 best model: Accuracy 51.518, Loss 2.297
+shadow 2 iter 2 best model: Accuracy 56.732, Loss 1.813
+shadow 2 iter 3 best model: Accuracy 55.331, Loss 1.675
+shadow 2 iter 4 best model: Accuracy 53.580, Loss 1.674
+shadow 3 iter 0 best model: Accuracy 60.661, Loss 2.086
+shadow 3 iter 1 best model: Accuracy 50.584, Loss 2.464
+shadow 3 iter 2 best model: Accuracy 56.887, Loss 1.790
+shadow 3 iter 3 best model: Accuracy 57.121, Loss 1.597
+shadow 3 iter 4 best model: Accuracy 56.498, Loss 1.538
+shadow 4 iter 0 best model: Accuracy 53.035, Loss 1.922
+shadow 4 iter 1 best model: Accuracy 54.280, Loss 1.833
+shadow 4 iter 2 best model: Accuracy 54.475, Loss 1.661
+shadow 4 iter 3 best model: Accuracy 54.942, Loss 1.562
+shadow 4 iter 4 best model: Accuracy 50.856, Loss 1.734
+Victim pruned model test accuracy: 53.126
+NN attack accuracy 69.443
+Top3-NN Attack Accuracy 69.44274341702388
+NNCl Attack Accuracy 69.44274341702388
+
+

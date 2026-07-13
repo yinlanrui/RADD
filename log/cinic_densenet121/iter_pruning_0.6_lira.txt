@@ -1,0 +1,6 @@
+Victim pruned model test accuracy: 67.256
+LiRA attack accuracy: 67.101
+LiRA attack AUC: 71.801
+LiRA TPR@1%FPR: 2.874
+LiRA TPR@0.5%FPR: 1.615
+

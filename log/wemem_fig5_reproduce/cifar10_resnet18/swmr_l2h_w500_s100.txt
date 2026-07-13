@@ -1,0 +1,48 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cifar10_resnet18.json
+  dataset_name: cifar10
+  defend: slide_re_ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.5
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: fig5_swmr_l2h_w500_s100
+  seed: 7
+  shadow_num: 0
+  soft_smoothing: 0.15
+  stride: 100
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 500
+============================================================
+cifar10_resnet18_iter_pruning_0.6_slide_re_ml2_fig5_swmr_l2h_w500_s100_100-500_0.01
+Pretrained Victim: Accuracy 74.885, Loss 0.892
+victim iter 0 best model: Accuracy 75.624, Loss 1.513
+victim iter 1 best model: Accuracy 76.353, Loss 0.901
+victim iter 2 best model: Accuracy 76.282, Loss 0.911
+victim iter 3 best model: Accuracy 77.435, Loss 0.930
+victim iter 4 best model: Accuracy 75.529, Loss 1.020
+Total slide_re_ml2 defend time: 226.31318593025208s

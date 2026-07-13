@@ -1,0 +1,159 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: slide_ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.1
+  width: 100
+============================================================
+resisc45_mobilenetv2_iter_pruning_0.6_slide_ml2_5-100_0.1
+Pretrained Victim: Accuracy 59.699, Loss 1.610
+victim iter 0 best model: Accuracy 17.743, Loss 3.359
+victim iter 1 best model: Accuracy 26.031, Loss 3.370
+victim iter 2 best model: Accuracy 23.813, Loss 3.901
+victim iter 3 best model: Accuracy 19.377, Loss 3.866
+victim iter 4 best model: Accuracy 11.595, Loss 3.738
+Total slide_ml2 defend time: 991.394547700882s
+shadow 0 iter 0 best model: Accuracy 16.187, Loss 4.192
+shadow 0 iter 1 best model: Accuracy 25.058, Loss 3.507
+shadow 0 iter 2 best model: Accuracy 17.743, Loss 3.623
+shadow 0 iter 3 best model: Accuracy 15.953, Loss 3.802
+shadow 0 iter 4 best model: Accuracy 10.233, Loss 3.929
+shadow 1 iter 0 best model: Accuracy 15.992, Loss 3.520
+shadow 1 iter 1 best model: Accuracy 27.004, Loss 3.540
+shadow 1 iter 2 best model: Accuracy 20.856, Loss 3.460
+shadow 1 iter 3 best model: Accuracy 22.685, Loss 3.644
+shadow 1 iter 4 best model: Accuracy 14.708, Loss 3.713
+shadow 2 iter 0 best model: Accuracy 16.615, Loss 4.192
+shadow 2 iter 1 best model: Accuracy 20.856, Loss 3.730
+shadow 2 iter 2 best model: Accuracy 13.463, Loss 3.751
+shadow 2 iter 3 best model: Accuracy 8.911, Loss 3.734
+shadow 2 iter 4 best model: Accuracy 5.486, Loss 3.781
+shadow 3 iter 0 best model: Accuracy 17.471, Loss 3.657
+shadow 3 iter 1 best model: Accuracy 25.564, Loss 3.651
+shadow 3 iter 2 best model: Accuracy 16.381, Loss 4.326
+shadow 3 iter 3 best model: Accuracy 11.206, Loss 3.679
+shadow 3 iter 4 best model: Accuracy 6.265, Loss 3.742
+shadow 4 iter 0 best model: Accuracy 12.763, Loss 4.732
+shadow 4 iter 1 best model: Accuracy 23.035, Loss 4.194
+shadow 4 iter 2 best model: Accuracy 18.521, Loss 3.629
+shadow 4 iter 3 best model: Accuracy 10.584, Loss 3.865
+shadow 4 iter 4 best model: Accuracy 6.887, Loss 3.766
+Victim pruned model test accuracy: 10.842
+SAMIA attack accuracy: 69.443
+Conf attack accuracy: 50.533
+Entr attack accuracy: 49.792
+Mentr attack accuracy: 50.493
+Hconf attack accuracy: 50.095
+
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/resisc45_mobilenetv2.json
+  dataset_name: resisc45
+  defend: slide_ml2
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 64
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: mobilenetv2
+  num_cls: 45
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 100
+============================================================
+resisc45_mobilenetv2_iter_pruning_0.6_slide_ml2_5-100_0.01
+Pretrained Victim: Accuracy 59.719, Loss 1.610
+victim iter 0 best model: Accuracy 41.128, Loss 2.729
+victim iter 1 best model: Accuracy 52.257, Loss 2.086
+victim iter 2 best model: Accuracy 50.778, Loss 3.846
+victim iter 3 best model: Accuracy 51.984, Loss 2.269
+victim iter 4 best model: Accuracy 53.152, Loss 2.287
+Total slide_ml2 defend time: 964.5690681934357s
+shadow 0 iter 0 best model: Accuracy 34.280, Loss 3.098
+shadow 0 iter 1 best model: Accuracy 53.813, Loss 2.671
+shadow 0 iter 2 best model: Accuracy 52.374, Loss 1.985
+shadow 0 iter 3 best model: Accuracy 55.759, Loss 2.040
+shadow 0 iter 4 best model: Accuracy 52.335, Loss 2.272
+shadow 1 iter 0 best model: Accuracy 40.895, Loss 3.602
+shadow 1 iter 1 best model: Accuracy 53.424, Loss 3.152
+shadow 1 iter 2 best model: Accuracy 55.447, Loss 1.962
+shadow 1 iter 3 best model: Accuracy 53.969, Loss 2.022
+shadow 1 iter 4 best model: Accuracy 48.016, Loss 2.104
+shadow 2 iter 0 best model: Accuracy 33.191, Loss 3.470
+shadow 2 iter 1 best model: Accuracy 49.572, Loss 4.670
+shadow 2 iter 2 best model: Accuracy 51.634, Loss 2.736
+shadow 2 iter 3 best model: Accuracy 55.447, Loss 2.853
+shadow 2 iter 4 best model: Accuracy 56.848, Loss 2.454
+shadow 3 iter 0 best model: Accuracy 39.922, Loss 3.869
+shadow 3 iter 1 best model: Accuracy 52.724, Loss 2.960
+shadow 3 iter 2 best model: Accuracy 53.385, Loss 2.440
+shadow 3 iter 3 best model: Accuracy 53.424, Loss 2.119
+shadow 3 iter 4 best model: Accuracy 57.315, Loss 2.127
+shadow 4 iter 0 best model: Accuracy 38.132, Loss 4.533
+shadow 4 iter 1 best model: Accuracy 50.078, Loss 1.983
+shadow 4 iter 2 best model: Accuracy 52.101, Loss 1.990
+shadow 4 iter 3 best model: Accuracy 50.467, Loss 3.238
+shadow 4 iter 4 best model: Accuracy 55.331, Loss 1.849
+Victim pruned model test accuracy: 51.683
+SAMIA attack accuracy: 69.437
+Conf attack accuracy: 56.719
+Entr attack accuracy: 53.874
+Mentr attack accuracy: 56.589
+Hconf attack accuracy: 56.987
+

@@ -1,0 +1,183 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_resnet18.json
+  dataset_name: cinic
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+cinic_resnet18_iter_pruning_0.6_adv_2.0_0.01
+Pretrained Victim: Accuracy 61.734, Loss 1.284
+victim iter 0 best model: Accuracy 61.655, Loss 1.550
+victim iter 1 best model: Accuracy 58.771, Loss 1.511
+victim iter 2 best model: Accuracy 60.340, Loss 1.275
+victim iter 3 best model: Accuracy 58.886, Loss 1.338
+victim iter 4 best model: Accuracy 56.573, Loss 1.339
+Total adv defend time: 568.4021215438843s
+shadow 0 iter 0 best model: Accuracy 61.402, Loss 1.386
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_resnet18.json
+  dataset_name: cinic
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: 
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+cinic_resnet18_iter_pruning_0.6_adv_2.0_0.01
+Pretrained Victim: Accuracy 61.734, Loss 1.284
+victim iter 0 best model: Accuracy 61.713, Loss 1.565
+victim iter 1 best model: Accuracy 60.830, Loss 1.339
+victim iter 2 best model: Accuracy 60.275, Loss 1.328
+victim iter 3 best model: Accuracy 59.907, Loss 1.340
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cinic_resnet18.json
+  dataset_name: cinic
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_risk_mode: risk
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: resnet18
+  num_cls: 10
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: 
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+cinic_resnet18_iter_pruning_0.6_adv_2.0_0.01
+Pretrained Victim: Accuracy 61.734, Loss 1.284
+victim iter 0 best model: Accuracy 61.713, Loss 1.570
+victim iter 1 best model: Accuracy 59.212, Loss 1.407
+victim iter 2 best model: Accuracy 59.891, Loss 1.310
+victim iter 3 best model: Accuracy 60.520, Loss 1.259
+victim iter 4 best model: Accuracy 59.204, Loss 1.295
+Total adv defend time: 645.5049080848694s
+shadow 0 iter 0 best model: Accuracy 60.904, Loss 1.320
+shadow 0 iter 1 best model: Accuracy 60.168, Loss 1.318
+shadow 0 iter 2 best model: Accuracy 59.792, Loss 1.407
+shadow 0 iter 3 best model: Accuracy 59.384, Loss 1.272
+shadow 0 iter 4 best model: Accuracy 59.319, Loss 1.222
+shadow 1 iter 0 best model: Accuracy 60.969, Loss 1.333
+shadow 1 iter 1 best model: Accuracy 59.139, Loss 1.345
+shadow 1 iter 2 best model: Accuracy 59.368, Loss 1.287
+shadow 1 iter 3 best model: Accuracy 59.809, Loss 1.248
+shadow 1 iter 4 best model: Accuracy 58.322, Loss 1.275
+shadow 2 iter 0 best model: Accuracy 61.672, Loss 1.485
+shadow 2 iter 1 best model: Accuracy 59.564, Loss 1.462
+shadow 2 iter 2 best model: Accuracy 57.407, Loss 1.531
+shadow 2 iter 3 best model: Accuracy 57.488, Loss 1.422
+shadow 2 iter 4 best model: Accuracy 59.694, Loss 1.325
+shadow 3 iter 0 best model: Accuracy 57.889, Loss 1.365
+shadow 3 iter 1 best model: Accuracy 60.716, Loss 1.168
+shadow 3 iter 2 best model: Accuracy 60.969, Loss 1.164
+shadow 3 iter 3 best model: Accuracy 60.871, Loss 1.119
+shadow 3 iter 4 best model: Accuracy 59.645, Loss 1.280
+shadow 4 iter 0 best model: Accuracy 59.972, Loss 1.300
+shadow 4 iter 1 best model: Accuracy 57.080, Loss 1.317
+shadow 4 iter 2 best model: Accuracy 60.046, Loss 1.267
+shadow 4 iter 3 best model: Accuracy 59.923, Loss 1.322
+shadow 4 iter 4 best model: Accuracy 60.111, Loss 1.174
+Victim pruned model test accuracy: 58.531
+SAMIA attack accuracy: 67.459
+Conf attack accuracy: 60.472
+Entr attack accuracy: 54.489
+Mentr attack accuracy: 60.533
+Hconf attack accuracy: 60.178
+
+Victim pruned model test accuracy: 58.531
+NN attack accuracy 63.025
+Top3-NN Attack Accuracy 63.02521008403362
+NNCl Attack Accuracy 67.23778400248989
+
+

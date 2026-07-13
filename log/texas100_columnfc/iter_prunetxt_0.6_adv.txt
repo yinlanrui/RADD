@@ -1,0 +1,106 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/texas100.json
+  dataset_name: texas100
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 6169
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: columnfc
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_prunetxt
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+texas100_columnfc_iter_prunetxt_0.6_adv_2.0_0.0005
+Pretrained Victim: Accuracy 62.545, Loss 1.294
+victim iter 0 best model: Accuracy 61.685, Loss 1.359
+victim iter 1 best model: Accuracy 60.466, Loss 1.403
+victim iter 2 best model: Accuracy 58.700, Loss 1.491
+victim iter 3 best model: Accuracy 55.916, Loss 1.517
+victim iter 4 best model: Accuracy 55.479, Loss 1.625
+Total adv defend time: 134.51099753379822s
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/texas100.json
+  dataset_name: texas100
+  defend: adv
+  defend_arg: 2.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 6169
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: columnfc
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_prunetxt
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+texas100_columnfc_iter_prunetxt_0.6_adv_2.0_0.01
+Pretrained Victim: Accuracy 62.545, Loss 1.294
+victim iter 0 best model: Accuracy 61.685, Loss 1.359
+victim iter 1 best model: Accuracy 60.466, Loss 1.403
+victim iter 2 best model: Accuracy 58.700, Loss 1.491
+victim iter 3 best model: Accuracy 55.916, Loss 1.517
+victim iter 4 best model: Accuracy 55.479, Loss 1.625
+Total adv defend time: 94.06858420372009s
+shadow 0 iter 0 best model: Accuracy 62.395, Loss 1.346
+shadow 0 iter 1 best model: Accuracy 60.721, Loss 1.424
+shadow 0 iter 2 best model: Accuracy 58.045, Loss 1.468
+shadow 0 iter 3 best model: Accuracy 57.627, Loss 1.548
+shadow 0 iter 4 best model: Accuracy 56.079, Loss 1.604
+shadow 1 iter 0 best model: Accuracy 62.122, Loss 1.337
+shadow 1 iter 1 best model: Accuracy 60.794, Loss 1.407
+shadow 1 iter 2 best model: Accuracy 58.173, Loss 1.497
+shadow 1 iter 3 best model: Accuracy 55.315, Loss 1.584
+shadow 1 iter 4 best model: Accuracy 53.003, Loss 1.632
+shadow 2 iter 0 best model: Accuracy 62.050, Loss 1.342

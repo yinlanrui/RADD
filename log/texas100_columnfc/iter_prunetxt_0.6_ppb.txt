@@ -1,0 +1,159 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/texas100.json
+  dataset_name: texas100
+  defend: ppb
+  defend_arg: 4.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 6169
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: columnfc
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_prunetxt
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.0005
+  width: None
+============================================================
+texas100_columnfc_iter_prunetxt_0.6_ppb_4.0_0.0005
+Pretrained Victim: Accuracy 62.545, Loss 1.294
+victim iter 0 best model: Accuracy 58.973, Loss 1.500
+victim iter 1 best model: Accuracy 60.066, Loss 1.455
+victim iter 2 best model: Accuracy 60.484, Loss 1.429
+victim iter 3 best model: Accuracy 61.030, Loss 1.431
+victim iter 4 best model: Accuracy 61.212, Loss 1.402
+Total ppb defend time: 347.97271609306335s
+shadow 0 iter 0 best model: Accuracy 58.355, Loss 1.501
+shadow 0 iter 1 best model: Accuracy 59.847, Loss 1.481
+shadow 0 iter 2 best model: Accuracy 59.720, Loss 1.454
+shadow 0 iter 3 best model: Accuracy 60.102, Loss 1.433
+shadow 0 iter 4 best model: Accuracy 60.320, Loss 1.426
+shadow 1 iter 0 best model: Accuracy 59.101, Loss 1.485
+shadow 1 iter 1 best model: Accuracy 59.519, Loss 1.460
+shadow 1 iter 2 best model: Accuracy 59.902, Loss 1.450
+shadow 1 iter 3 best model: Accuracy 60.794, Loss 1.438
+shadow 1 iter 4 best model: Accuracy 60.812, Loss 1.418
+shadow 2 iter 0 best model: Accuracy 59.319, Loss 1.480
+shadow 2 iter 1 best model: Accuracy 59.374, Loss 1.447
+shadow 2 iter 2 best model: Accuracy 60.339, Loss 1.439
+shadow 2 iter 3 best model: Accuracy 60.521, Loss 1.450
+shadow 2 iter 4 best model: Accuracy 61.085, Loss 1.414
+shadow 3 iter 0 best model: Accuracy 57.117, Loss 1.539
+shadow 3 iter 1 best model: Accuracy 58.682, Loss 1.491
+shadow 3 iter 2 best model: Accuracy 59.592, Loss 1.468
+shadow 3 iter 3 best model: Accuracy 60.630, Loss 1.451
+shadow 3 iter 4 best model: Accuracy 60.721, Loss 1.431
+shadow 4 iter 0 best model: Accuracy 57.099, Loss 1.527
+shadow 4 iter 1 best model: Accuracy 58.791, Loss 1.474
+shadow 4 iter 2 best model: Accuracy 59.956, Loss 1.454
+shadow 4 iter 3 best model: Accuracy 60.193, Loss 1.424
+shadow 4 iter 4 best model: Accuracy 60.011, Loss 1.436
+Victim pruned model test accuracy: 61.457
+SAMIA attack accuracy: 76.152
+Conf attack accuracy: 65.354
+Entr attack accuracy: 62.094
+Mentr attack accuracy: 64.931
+Hconf attack accuracy: 64.128
+
+
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/texas100.json
+  dataset_name: texas100
+  defend: ppb
+  defend_arg: 4.0
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 6169
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: columnfc
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_prunetxt
+  risk_gamma: 1.0
+  seed: 7
+  shadow_num: 5
+  soft_smoothing: 0.15
+  stride: None
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: None
+============================================================
+texas100_columnfc_iter_prunetxt_0.6_ppb_4.0_0.01
+Pretrained Victim: Accuracy 62.545, Loss 1.294
+victim iter 0 best model: Accuracy 58.973, Loss 1.500
+victim iter 1 best model: Accuracy 60.066, Loss 1.455
+victim iter 2 best model: Accuracy 60.484, Loss 1.429
+victim iter 3 best model: Accuracy 61.030, Loss 1.431
+victim iter 4 best model: Accuracy 61.212, Loss 1.402
+Total ppb defend time: 212.99537825584412s
+shadow 0 iter 0 best model: Accuracy 58.355, Loss 1.501
+shadow 0 iter 1 best model: Accuracy 59.847, Loss 1.481
+shadow 0 iter 2 best model: Accuracy 59.720, Loss 1.454
+shadow 0 iter 3 best model: Accuracy 60.102, Loss 1.433
+shadow 0 iter 4 best model: Accuracy 60.320, Loss 1.426
+shadow 1 iter 0 best model: Accuracy 59.101, Loss 1.485
+shadow 1 iter 1 best model: Accuracy 59.519, Loss 1.460
+shadow 1 iter 2 best model: Accuracy 59.902, Loss 1.450
+shadow 1 iter 3 best model: Accuracy 60.794, Loss 1.438
+shadow 1 iter 4 best model: Accuracy 60.812, Loss 1.418
+shadow 2 iter 0 best model: Accuracy 59.319, Loss 1.480
+shadow 2 iter 1 best model: Accuracy 59.374, Loss 1.447
+shadow 2 iter 2 best model: Accuracy 60.339, Loss 1.439
+shadow 2 iter 3 best model: Accuracy 60.521, Loss 1.450
+shadow 2 iter 4 best model: Accuracy 61.085, Loss 1.414
+shadow 3 iter 0 best model: Accuracy 57.117, Loss 1.539
+shadow 3 iter 1 best model: Accuracy 58.682, Loss 1.491
+shadow 3 iter 2 best model: Accuracy 59.592, Loss 1.468
+shadow 3 iter 3 best model: Accuracy 60.630, Loss 1.451
+shadow 3 iter 4 best model: Accuracy 60.721, Loss 1.431
+shadow 4 iter 0 best model: Accuracy 57.099, Loss 1.527
+shadow 4 iter 1 best model: Accuracy 58.791, Loss 1.474
+shadow 4 iter 2 best model: Accuracy 59.956, Loss 1.454
+shadow 4 iter 3 best model: Accuracy 60.193, Loss 1.424
+shadow 4 iter 4 best model: Accuracy 60.011, Loss 1.436
+Victim pruned model test accuracy: 61.457
+SAMIA attack accuracy: 76.152
+Conf attack accuracy: 65.354
+Entr attack accuracy: 62.094
+Mentr attack accuracy: 64.931
+Hconf attack accuracy: 64.128
+

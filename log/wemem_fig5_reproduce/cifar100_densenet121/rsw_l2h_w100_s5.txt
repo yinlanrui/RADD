@@ -1,0 +1,48 @@
+============================================================
+Run Configuration:
+  adaptive: False
+  batch_size: 128
+  config_path: ./config/cifar100_dense.json
+  dataset_name: cifar100
+  defend: slide_re
+  defend_arg: 4
+  device: 0
+  distill_temp: 3.0
+  distill_weight: 1.0
+  early_stop: 5
+  entropy_weight: 0.1
+  epochs: 100
+  hard_high_weight: 0.05
+  hidden_size: 128
+  high_risk_cap: 1
+  high_risk_ratio: 0.1
+  image_size: 32
+  input_dim: 3
+  lr: 0.001
+  mem_thre: 0.6
+  mix_alpha: 0.2
+  model_name: densenet121
+  num_cls: 100
+  optimizer: adam
+  prune_epochs: 21
+  prune_iter: 5
+  prune_sparsity: 0.6
+  pruner_name: iter_pruning
+  risk_gamma: 1.0
+  run_tag: fig5_rsw_l2h_w100_s5
+  seed: 7
+  shadow_num: 0
+  soft_smoothing: 0.15
+  stride: 5
+  weight_decay: 0.0005
+  weight_decay_mem: 0.01
+  width: 100
+============================================================
+cifar100_densenet121_iter_pruning_0.6_slide_re_fig5_rsw_l2h_w100_s5_5-100_0.01
+Pretrained Victim: Accuracy 46.485, Loss 2.102
+victim iter 0 best model: Accuracy 46.918, Loss 2.415
+victim iter 1 best model: Accuracy 51.812, Loss 2.347
+victim iter 2 best model: Accuracy 52.659, Loss 2.456
+victim iter 3 best model: Accuracy 51.976, Loss 2.366
+victim iter 4 best model: Accuracy 51.129, Loss 2.588
+Total slide_re defend time: 815.4863040447235s
