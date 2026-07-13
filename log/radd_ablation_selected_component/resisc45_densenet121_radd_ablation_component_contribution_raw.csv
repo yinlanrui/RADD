@@ -1,5 +1,0 @@
-dataset,arch,variant,acc,avg_attack
-resisc45,densenet121,Full,75.531,58.318200000000004
-resisc45,densenet121,w/o Budget,75.331,59.126200000000004
-resisc45,densenet121,w/o KD,69.158,58.4408
-resisc45,densenet121,w/o Entropy,74.529,58.2778

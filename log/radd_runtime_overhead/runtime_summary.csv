@@ -1,7 +1,0 @@
-dataset,architecture,method,prune_sparsity,wall_time_seconds,status,log_file
-location,columnfc,base,0.6,263,0,log/radd_runtime_overhead/location_columnfc/base.txt
-location,columnfc,swmr,0.6,275,0,log/radd_runtime_overhead/location_columnfc/swmr.txt
-location,columnfc,radd,0.6,310,0,log/radd_runtime_overhead/location_columnfc/radd.txt
-cifar100,resnet18,base,0.6,1593,0,log/radd_runtime_overhead/cifar100_resnet18/base.txt
-cifar100,resnet18,swmr,0.6,1801,0,log/radd_runtime_overhead/cifar100_resnet18/swmr.txt
-cifar100,resnet18,radd,0.6,1540,0,log/radd_runtime_overhead/cifar100_resnet18/radd.txt
