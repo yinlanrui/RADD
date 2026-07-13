@@ -1,182 +1,358 @@
-# Defending Against Membership Inference Attacks on Iteratively Pruned Deep Neural Networks
-Code for the paper **"Defending Against Membership Inference Attacks on Iteratively Pruned Deep Neural Networks"** in NDSS'25.
+# RADD: Risk-Aware Distillation Defense Against Membership Inference Attacks on Iteratively Pruned Neural Networks
 
-## About
-Part of the codes are modified from https://github.com/Machine-Learning-Security-Lab/mia_prune.
+This repository contains the code and experiment scripts for our paper:
 
->Reference:
-Xiaoyong Yuan and Lan Zhang. Membership inference attacks and defenses in neural network pruning. In 31st USENIX Security Symposium (USENIX Security 22), 2022.
+**RADD: Risk-Aware Distillation Defense Against Membership Inference Attacks on Iteratively Pruned Neural Networks**.
 
-## Getting Started
+RADD is a pruning-time privacy defense for iteratively pruned neural networks. It targets a leakage channel that remains in memorization-aware pruning defenses: high-risk training samples can still impose sharp hard-label supervision during recovery fine-tuning. RADD treats the supervision target itself as a defense surface by combining:
 
-### Runing Environment and Installation
+- **High-risk exposure budgeting**: high-memorization-risk samples are replayed only under a strict exposure cap and ratio constraint.
+- **Risk-aware teacher distillation**: high-risk hard-label learning is replaced with soft targets from the pre-pruning teacher model.
+- **Confidence smoothing**: entropy regularization reduces overconfident high-risk predictions that are exploitable by membership inference attacks.
 
-We tested on Ubuntu with Python 3.6.13 and torch-gpu. We recommend installing the dependencies via virtual env management tool, e.g., Anaconda.
+The implementation supports the main paper experiments on image and tabular benchmarks, including CIFAR100, CINIC, RESISC45, and Location, with ResNet18, VGG16BN, DenseNet121, MobileNetV2, and ColumnFC architectures.
 
+## Repository Overview
+
+```text
+WeMeM-main/
+  config/                         Dataset/model configuration files
+  data/datasets/                   Local datasets
+  memscore/                        Memorization-score CSV files
+  result/                          Pretrained and pruned models
+  log/                             Experiment logs and plotted figures
+
+  pretrain_modi.py                 Train victim and shadow models
+  generate_memscore_modi.py        Generate memorization scores
+  prune_modi.py                    Prune and fine-tune models with defenses
+  mia_modi.py                      Run membership inference attacks
+  attackers.py                     Attack implementations
+  datasets.py                      Dataset loaders
+  data_process.py                  Tabular-data preprocessing
+  base_model.py                    Model factory and architecture helpers
+  pruner.py                        Pruning utilities
+
+  run_memscore_batch.sbt           Batch pretraining and mem-score preparation
+  run_baseline_defenses.sbt        Base and baseline defense experiments
+  run_risk_distill_swmr.sbt        Main RADD defense experiments
+  run_append_nn_attacks.sbt        Append NN-family attacks to existing logs
+  run_lira_eval.sbt                Low-FPR LiRA evaluation
+  run_radd_mechanism.sbt           Mechanism-analysis data extraction
+  run_radd_runtime_overhead.sbt    Runtime-overhead experiments
+  run_radd_kd_weighting.sbt        Distillation-weighting ablation
+  run_risk_distill_ablation.sbt    RADD component ablation
+  run_rd_pruning_way_fig8.sbt      Iterative vs. one-shot pruning study
+  run_rd_structured_fig9.sbt       Structured pruning study
+  run_radd_sparsity_sensitivity.sbt
+  run_radd_window_robustness.sbt
+  run_radd_fig13_attack_robustness.sbt
+
+  plot_defense.py
+  plot_lira.py
+  plot_radd_mechanism.py
+  plot_rd_pruning_way_fig8.py
+  plot_rd_structured_fig9.py
+  plot_radd_sparsity_sensitivity.py
+  plot_radd_window_robustness.py
+  plot_radd_fig13_attack_robustness.py
+  plot_rd_sensitivity.py
 ```
-conda create -n python-pytorch python=3.6.13
-conda activate python-pytorch
 
-pip install torch==1.10.1+cu111 torchvision==0.11.2+cu111 torchaudio==0.10.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
-pip install scikit-learn pandas matplotlib nni==2.3 pynvml tensorboard
+The files with the `.sbt` suffix are SLURM batch scripts. They are ordinary Bash scripts containing `#SBATCH` directives. Before using them on a server, edit the `PROJECT_DIR`, `DATASETS`, `ARCHITECTURES`, and attack settings near the top of each script.
+
+## Environment
+
+The original experiments were run with Python 3.6.13 and PyTorch 1.10.1. A compatible setup is:
+
+```bash
+conda create -n radd python=3.6.13
+conda activate radd
+
+pip install torch==1.10.1+cu111 torchvision==0.11.2+cu111 torchaudio==0.10.1 \
+  -f https://download.pytorch.org/whl/cu111/torch_stable.html
+pip install scikit-learn pandas matplotlib nni==2.3 pynvml tensorboard tqdm scipy
 ```
-**Note:** All dependencies of the project are in the `requirements.txt` we provide. You can also install them directly through this file after activating the virtual environment.  
 
-### Datasets and Models
-1. **Structure of Important Folders**:
-   ```plaintext
-   ├─ config
-   ├─ data
-   │   └─ datasets
-   │       ├─ cifar10-data
-   │       ├─ cifar100-data
-   │       ├─ cinic
-   │       ├─ location
-   │       ├─ purchase100
-   │       └─ texas
-   ├─ log
-   │   ├─ cifar10_resnet18
-   │   ├─ location_columnfc
-   │   └─ ...
-   ├─ memscore
-   └─ result
-       ├─ cifar10_resnet18
-       │   ├─ iter_pruning_0.6_slide_ml2_model
-       │   └─ ...
-       ├─ location_columnfc
-       │   ├─ iter_prunetxt_0.6_ml2_model
-       │   └─ ...
-       └─ ...
-   ```
+The provided `requirements.txt` records the environment used in our Linux experiments. If your CUDA or driver version differs, install the matching PyTorch build first and then install the remaining dependencies.
 
-   **Description**:
-   (1) In the `config` folder, configuration files for different experimental settings are stored.
-   (2) In the `data/datasets` folder, different downloaded datasets are stored.
-   (3) In the `log` folder, the outputs of experiments under different datasets and model architectures are stored.
-   (4) The mem-scores of datasets need to be stored in the `memscore` folder in CSV format. Here, we provide the mem-score that can be used directly. The mem-score can also be recalculated using the definition or as described in our paper.
-   (5) The pretrained and pruned models will be saved in the `result` folder, and you can find the `.pth` model file in the folder path named the specific dataset and model architecture.
-   
-2. **Prepare the Datasets**: We use three image datasets: CIFAR10, CIFAR100, CINIC; three tabular datasets: Location, Texas, Purchase. We also provide an experimental Tiny ImageNet integration for additional CIFAR100-like evaluations. For CIFAR10/CIFAR100, you can download it directly through the `torchvision` tool in code `datasets.py`. We provide download links and saving instructions for other datasets below:
-   - CINIC: https://datashare.ed.ac.uk/bitstream/handle/10283/3192/CINIC-10.tar.gz?sequence=4&isAllowed=y \
-     Download and unzip the dataset and put the `train` and `test` folders into the created `data/dataset/cinic` folder.
-   - Tiny ImageNet: Download and unzip `tiny-imagenet-200`, then put it under `data/datasets/tinyimagenet`, so the folder path becomes `data/datasets/tinyimagenet/tiny-imagenet-200`. The loader uses the official `train` split for training and the labeled `val` split for testing.
-   - Location: https://github.com/jjy1994/MemGuard/tree/master/data/location \
-     Download `data_complete.npz` and put it into the `data/dataset/location` folder.          
-   - Texas: https://www.comp.nus.edu.sg/~reza/files/dataset_texas.tgz \
-     Download and unzip `texas/100/feats.txt` and `texas/100/labels.txt` and put them into the `data/dataset/texas` folder.
-   - Purchase: https://www.comp.nus.edu.sg/~reza/files/dataset_purchase.tgz \
-     Download and unzip `dataset_purchase` and put it into the `data/dataset/purchase100` folder and rename it to `purchase100.txt`.
+## Datasets
 
-   It should be noted that since the training data and test data need to be manually split for tabular datasets, it is necessary to ensure that the mem-scores correspond to the split training data. Here, we provide our split Location dataset `location.pkl`, in which the training data matches the mem-scores of the corresponding data we gave.
+The paper focuses on the following datasets:
 
-   **Tiny ImageNet note:** the project does not include Tiny ImageNet mem-score files. Before running WeMeM-style defenses on this dataset, create `memscore/memscore_tinyimagenet_resnet18.csv`, `memscore/memscore_tinyimagenet_vgg16bn.csv`, and/or `memscore/memscore_tinyimagenet_densenet121.csv` with scores aligned to the Tiny ImageNet training-set indices.
-   
-3. **Models**: We use four model architectures for evaluation: ResNet18, DenseNet121, VGG16 and FC (fully connected network).For CIFAR10, CIFAR100, CINIC, and Tiny ImageNet, we use ResNet18, DenseNet121, and VGG16. For Texas, Location, and Purchase, we employ an FC.
+| Dataset | Type | Paper role | Architectures |
+| --- | --- | --- | --- |
+| CIFAR100 | Image | Fine-grained natural-image benchmark | ResNet18, VGG16BN, DenseNet121, MobileNetV2 |
+| CINIC | Image | Broader natural-image distribution | ResNet18, VGG16BN, DenseNet121, MobileNetV2 |
+| RESISC45 | Image | Remote-sensing scene classification | ResNet18, VGG16BN, DenseNet121, MobileNetV2 |
+| Location | Tabular | Membership-inference tabular benchmark | ColumnFC |
 
-## Basic Usage
-1. **Step 1: Train an original model:**
-   
-   ```
-   python pretrain_modi.py [GPU-ID] [config_path]
-   ```
+The repository also contains configuration files for additional exploratory datasets. Those files are useful for extension experiments, but the paper claims should be interpreted according to the datasets reported in the manuscript.
 
-2. **Step 2: Prune and fine-tune the model:**
+Expected dataset locations:
 
-   (1) Option 1: with `Base` defense (default)    
+```text
+data/datasets/cifar100-data/
+data/datasets/cinic/
+data/datasets/resisc45/
+data/datasets/location/
+```
 
-      ```
-      python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter]
-      ```
-   (2) Option 2: with our defenses
+CIFAR100 can be downloaded automatically through `torchvision`. CINIC, RESISC45, and Location should be placed manually according to the corresponding loader requirements in `datasets.py` and `data_process.py`.
 
-   - our `defend_name` in [`slide`, `slide_re`]:  
-     ```
-     python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend [defend_name] --stride [step_size] --width [window_width]
-     ```
+For tabular datasets, the train/test split must match the memorization-score file. If the split changes, regenerate the memorization scores before running RADD.
 
-   - our `defend_name` is `ml2`:  
-     ```
-     python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend [defend_name] --weight_decay_mem [risk_reg] --mem_thre [mem_thred]
-     ```
+## Memorization Scores
 
-   - our `defend_name` in [`slide_ml2`, `slide_re_ml2`]:  
-      ```
-      python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend [defend_name] --weight_decay_mem [risk_reg] --stride [step_size] --width    
-     [window_width] --mem_thre [mem_thred]
-      ```
+RADD uses a memorization score `m_i` for each training sample. Scores are stored under `memscore/` and are consumed by `prune_modi.py` during risk-aware fine-tuning.
 
-   - experimental extension `soft_swmr`:
-      ```
-      python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend soft_swmr --weight_decay_mem [risk_reg] --stride [reuse_penalty] --width [window_width] --risk_gamma 1.0 --soft_smoothing 0.15 --entropy_weight 0.1 --mix_alpha 0.2
-      ```
+To prepare victim/shadow models and memorization scores in batch, edit and submit:
 
-   - experimental extension `risk_distill_swmr`:
-      ```
-      python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend risk_distill_swmr --weight_decay_mem [risk_reg] --stride [step_size] --width [window_width] --mem_thre [mem_thred] --risk_gamma 1.0 --distill_temp 3.0 --distill_weight 1.0 --hard_high_weight 0.0 --entropy_weight 0.2 --high_risk_cap 1 --high_risk_ratio 0.1
-      ```
-   (3) Option 3: with other defenses
+```bash
+sbatch run_memscore_batch.sbt
+```
 
-   - `defend_name` in [`ppb`, `adv`, `dp`, `relaxloss`]:  
+Important settings in the script:
 
-     ```
-     python prune_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --prune_iter [prune_iter] --defend [defend_name] --defend_arg [defend_arg]
-     ```
+- `DATASETS`: datasets to process.
+- `ARCHITECTURES`: model architectures to process.
+- `K_FOLDS`: number of folds used for score estimation.
+- `RUN_PRETRAIN_IF_MISSING`: whether to train missing victim/shadow models.
+- `FORCE_PRETRAIN`: whether to overwrite stale pretrained models.
 
-4. **Step 3: Adaptive Attack**
+## Main RADD Command
 
-   (1) Option 1: attack under `Base` method:
-      ```
-      python mia_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --attacks [attacks]
-      ```
-   (2) Option 2: attack under our defenses:
-      ```
-      python mia_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --attacks [attacks] --defend [defend_name] --adaptive
-      ```
-   (3) Option 3: attack under other defenses:
-      ```
-      python mia_modi.py [GPU-ID] [config_path] --pruner_name [pruner_name] --prune_sparsity [prune_sparsity] --attacks [attacks] --defend [defend_name] --defend_arg [defend_arg] --adaptive
-      ```
+A single RADD pruning/fine-tuning run can be launched with:
 
-   `attacks` can be `threshold` (involves Conf, Entr, Mentr, and Hconf), `samia`, `lira`, `nn`, `nn_top3`, `nn_cls`.
+```bash
+python prune_modi.py 0 ./config/cifar100_resnet18.json \
+  --pruner_name iter_pruning \
+  --prune_sparsity 0.6 \
+  --prune_iter 5 \
+  --defend risk_distill_swmr \
+  --weight_decay_mem 0.01 \
+  --stride 5 \
+  --width 100 \
+  --mem_thre 0.6 \
+  --risk_gamma 1.0 \
+  --distill_temp 3.0 \
+  --distill_weight 1.0 \
+  --hard_high_weight 0.0 \
+  --entropy_weight 0.2 \
+  --high_risk_cap 1 \
+  --high_risk_ratio 0.1
+```
 
-## Note
-1. The process output, test accuracy, attack accuracy and defense time will be saved in the `log` folder.
-2. `config_path` is in the `config` folder, e.g., `./config/cifar10_resnet18.json`.  
-3. `pruner_name` can be `iter_pruning` (for VGG16, ResNet18, and DenseNet121) or `iter_prunetxt` (for FC model).  
-4. `prune_sparsity` we set in experiment is [0.5, 0.6, 0.7].   
-5. `prune_iter` we set in experiment is 5.  
-6. `slide` is RSW(H->L), `slide_re` is RSW(L->H), `ml2` is RMR, `slide_ml2` is SWMR(H->L), `slide_re_ml2` is SWMR(L->H). `soft_swmr` is an experimental extension with risk-aware sampling, continuous mem-score regularization, risk-aware label smoothing, entropy regularization, and mixup. `risk_distill_swmr` uses a strict high-risk exposure budget and replaces high-risk hard-label learning with teacher soft-label distillation.  
-7. `risk_reg` is the coefficient of risk memory regularization.  
-8. `mem_thred` is the threshold of mem-score.
-9. `defend_arg` is the hyper-parameters for other defenses: [1, 2, 4, 8, 16] for `ppb`, [1, 2, 4, 8] for `adv`, [0.01, 0.1, 1] for `dp`, and 1 for `relaxloss`.
+For tabular experiments, use `iter_prunetxt` and a `columnfc` configuration such as `./config/location.json`.
 
-## Examples for Evaluation:
-Since our defense method is executed during the fine-tuning (retraining) stage of the model pruning process, and we use a model pruning method that includes five iterations in the experiments, this require five rounds of retraining operations on a normal pruned model (victim model) and five corresponding shadow pruned models, respectively, which will require more time. Therefore, in order to simplify the evaluation process, we only select one representative image dataset (e.g., CIFAR10) and one tabular dataset (e.g., Location) for evaluation. The evaluation method on the rest of the datasets (model) are the same as the example evaluation method we give, only the `config_path` needs to be changed.
+## Membership Inference Attacks
 
-- Download the data files according to the second item in "Datasets and Models" when you use tabular or CINIC datasets.
-- Please run `run_shell.sh` (you may need to run `chmod +x run_shell.sh` first), which consolidates all experimental steps on CIFAR10-ResNet18 and Location-FC. Note that we only evaluate the defense performance on the 'Base' method and our three methods under the best defense settings (`slide_re` (RSW), `ml2` (RMR), `slide_ml2` (SWMR)) with the pruning rate of 0.6. To save time, we perform metric-based attack `threshold` (i.e., Conf, Entr, Mentr, and Hconf) and a representative classifier-based attack `samia` (i.e., SAMIA).
+RADD is evaluated against multiple MIA families:
 
-- You can continue to evaluate other defense methods (this will require more evaluation time). An example of other defense method is as follows:
-   ```
-   # Prune and fine-tune models with 'ppb' defense method
-   python prune_modi.py 0 ./config/cifar10_resnet18.json --pruner_name iter_pruning --prune_sparsity 0.6 --prune_iter 5 --defend ppb --defend_arg 4
+| Attack option | Reported attack(s) |
+| --- | --- |
+| `threshold` | Conf, Entr, Mentr, Hconf |
+| `samia` | SAMIA |
+| `nn` | NN |
+| `nn_top3` | Top3-NN |
+| `nn_cls` | Cl-NN |
+| `lira` | Low-FPR LiRA evaluation |
 
-   # Adaptive attack on pruned models with 'ppb' defense method
-   python mia_modi.py 0 ./config/cifar10_resnet18.json --pruner_name iter_pruning --prune_sparsity 0.6 --attacks threshold,samia --defend ppb --defend_arg 4 --adaptive
-   ```
-- We also provide a running script, `run_custom.sh`, for all other defense methods used in the evaluation. You can run the script directly (you may need to run `chmod +x run_custom.sh` first) to evaluate other defense methods.
-  
-### Interpreting the results
-The test accuracy of the iteratively pruned models with different defense methods and the attack accuracy under different MIAs can be found in the corresponding files in the `log/` directory. 
+Run adaptive attacks on a defended model with:
 
-For example, the evaluation results of cifar10-resnet18 pruned model with `slide_ml2` defense are stored in `log/cifar10_resnet18/iter_pruning_0.6_slide_ml2.txt`, where "Victim pruned model test accuracy" represents prediction accuracy of the pruned model, and "[attack name] attack accuracy" represents accuracy of MIAs on the pruned model. Additionally, you can check the defense time required for the current defense through "Total [defense name] defend time".
+```bash
+python mia_modi.py 0 ./config/cifar100_resnet18.json \
+  --pruner_name iter_pruning \
+  --prune_sparsity 0.6 \
+  --attacks threshold,samia,nn,nn_top3,nn_cls \
+  --defend risk_distill_swmr \
+  --adaptive
+```
+
+When computing **average attack accuracy** for the main paper setting, include all available attacks:
+
+```text
+Conf, Entr, Mentr, Hconf, SAMIA, NN, Top3-NN, Cl-NN
+```
+
+If an older experiment log does not contain NN, Top3-NN, and Cl-NN, do not silently claim an eight-attack average. Either append the missing attacks with `run_append_nn_attacks.sbt` or explicitly report that the average is computed over the available attack set.
+
+## Recommended Reproduction Workflow
+
+For a clean server reproduction, use the scripts in the following order.
+
+### 1. Prepare data and configurations
+
+Place datasets under `data/datasets/` and verify that the needed config files exist, for example:
+
+```text
+config/cifar100_resnet18.json
+config/cifar100_vgg16.json
+config/cifar100_dense.json
+config/cifar100_mobilenetv2.json
+config/cinic_resnet18.json
+config/resisc45_resnet18.json
+config/location.json
+```
+
+### 2. Generate or verify memorization scores
+
+```bash
+sbatch run_memscore_batch.sbt
+```
+
+This step prepares pretrained victim/shadow models and memorization scores.
+
+### 3. Run baseline defenses
+
+```bash
+sbatch run_baseline_defenses.sbt
+```
+
+This script runs the undefended pruning baseline and comparison defenses such as PPB, ADV, DP, RelaxLoss, RSW, RMR, and SWMR, depending on the script settings.
+
+### 4. Run RADD
+
+```bash
+sbatch run_risk_distill_swmr.sbt
+```
+
+This is the main RADD experiment script. It runs `risk_distill_swmr`, the implementation name for RADD in this codebase.
+
+### 5. Append missing NN-family attacks if needed
+
+```bash
+sbatch run_append_nn_attacks.sbt
+```
+
+Use this step when earlier logs contain only threshold attacks and SAMIA. It helps avoid recomputing completed defenses while filling in NN, Top3-NN, and Cl-NN attack results.
+
+### 6. Run specialized paper experiments
+
+Submit the corresponding scripts as needed:
+
+```bash
+sbatch run_lira_eval.sbt
+sbatch run_radd_mechanism.sbt
+sbatch run_rd_pruning_way_fig8.sbt
+sbatch run_rd_structured_fig9.sbt
+sbatch run_radd_sparsity_sensitivity.sbt
+sbatch run_radd_window_robustness.sbt
+sbatch run_radd_fig13_attack_robustness.sbt
+sbatch run_radd_kd_weighting.sbt
+sbatch run_risk_distill_ablation.sbt
+sbatch run_rd_sensitivity.sbt
+sbatch run_radd_runtime_overhead.sbt
+```
+
+## Plotting
+
+After synchronizing server logs back to the local machine, generate figures with:
+
+```bash
+python plot_defense.py
+python plot_lira.py
+python plot_radd_mechanism.py
+python plot_rd_pruning_way_fig8.py
+python plot_rd_structured_fig9.py
+python plot_radd_sparsity_sensitivity.py
+python plot_radd_window_robustness.py
+python plot_radd_fig13_attack_robustness.py
+python plot_rd_sensitivity.py
+```
+
+Most plots are saved under:
+
+```text
+log/<experiment_name>/figures/
+```
+
+The paper copies final PDF figures into the LaTeX project under:
+
+```text
+../IEEE_Template/fig/
+```
+
+## Output Files
+
+Experiment outputs are written to `log/`. For example:
+
+```text
+log/cifar100_resnet18/iter_pruning_0.6_.txt
+log/cifar100_resnet18/iter_pruning_0.6_risk_distill_swmr.txt
+log/radd_mechanism/cifar100_resnet18/
+log/radd_sparsity_sensitivity/
+log/radd_window_robustness/
+log/radd_fig13_attack_robustness/
+```
+
+Common fields in log files:
+
+- `Victim pruned model test accuracy`: prediction accuracy of the pruned victim model.
+- `<attack name> attack accuracy`: MIA attack accuracy.
+- `Total <defense name> defend time`: defense runtime.
+
+## Method Names in Code
+
+Several defense names are inherited from the original pruning-privacy codebase:
+
+| Code name | Paper name / role |
+| --- | --- |
+| empty defense name | Base iterative pruning |
+| `slide` | RSW(H-to-L) |
+| `slide_re` | RSW(L-to-H) |
+| `ml2` | RMR |
+| `slide_ml2` | SWMR(H-to-L) |
+| `slide_re_ml2` | SWMR(L-to-H) |
+| `risk_distill_swmr` | RADD |
+| `ppb` | Prediction purification baseline |
+| `adv` | Adversarial regularization |
+| `dp` | Differential privacy baseline |
+| `relaxloss` | RelaxLoss |
+
+## Key Hyperparameters
+
+| Parameter | Meaning | Default in main RADD experiments |
+| --- | --- | --- |
+| `--prune_sparsity` | Target pruning sparsity | `0.6` |
+| `--prune_iter` | Number of pruning iterations | `5` |
+| `--mem_thre` | Memorization-score threshold for high-risk samples | `0.6` |
+| `--high_risk_cap` | Maximum high-risk exposure count | `1` |
+| `--high_risk_ratio` | High-risk ratio in class-balanced window | `0.1` |
+| `--distill_temp` | Distillation temperature | `3.0` |
+| `--distill_weight` | KD loss weight | `1.0` |
+| `--hard_high_weight` | Residual hard-label weight for high-risk samples | `0.0` |
+| `--entropy_weight` | Entropy regularization weight | `0.2` for images, `0.1` for tabular data |
+| `--weight_decay_mem` | Memorization-weighted regularization strength | `0.01` |
+| `--risk_gamma` | Risk-weight exponent | `1.0` |
+
+## Notes for Extending to New Datasets
+
+To add a new dataset:
+
+1. Add a dataset loader in `datasets.py` or tabular preprocessing in `data_process.py`.
+2. Add a config file under `config/`.
+3. Verify that `base_model.py` supports the intended architecture.
+4. Generate memorization scores with `run_memscore_batch.sbt`.
+5. Run Base, baselines, RADD, and the full attack suite.
+6. Report average attack accuracy only over attacks that were actually executed.
+
+For a dataset to be useful in this paper's evaluation style, the undefended pruned model should exhibit non-trivial membership leakage and the competing defenses should not already push nearly all attacks to random-guessing behavior without utility loss. Otherwise, RADD may be correct but visually indistinguishable from existing defenses.
+
+## Acknowledgements
+
+This repository builds on and extends code from prior work on membership inference attacks and defenses for pruned neural networks. Some inherited modules and baseline names follow the original implementation conventions. The RADD-specific extensions include risk-aware distillation, high-risk exposure budgeting, additional NN-family attack support, mechanism analysis, sensitivity studies, and paper-specific plotting scripts.
 
 ## Citation
-```
-@inproceedings{shang2025iteratively,
-  title = {Defending Against Membership Inference Attacks on Iteratively Pruned Deep Neural Networks},
-  booktitle = {Network and Distributed System Security (NDSS) Symposium},
-  author={Shang, Jing and Wang, Jian and Wang, Kailun and Liu, Jiqiang and Jiang, Nan and Armanuzzaman, Md and Zhao, Ziming},
-  year={2025}
+
+If you use this code, please cite our paper:
+
+```bibtex
+@article{radd2026,
+  title   = {RADD: Risk-Aware Distillation Defense Against Membership Inference Attacks on Iteratively Pruned Neural Networks},
+  author  = {Shigen Shen and Lanrui Yin and Yizhou Shen and Jingnan Dong and Wenlong Ke and Ruilong Deng and Tian Wang},
+  journal = {Under Review},
+  year    = {2026}
 }
 ```
+
+The citation block should be updated with the final author list and venue after publication.
