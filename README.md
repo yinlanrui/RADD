@@ -1,6 +1,4 @@
-# RADD: Risk-Aware Distillation Defense for
-Mitigating Membership Leakage During Iterative
-Neural Network Prunin
+# RADD: Risk-Aware Distillation Defense for Mitigating Membership Leakage During Iterative Neural Network Prunin
 
 This repository contains the code and experiment scripts for our paper:
 
