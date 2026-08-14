@@ -34,30 +34,6 @@ WeMeM-main/
   base_model.py                    Model factory and architecture helpers
   pruner.py                        Pruning utilities
 
-  run_memscore_batch.sbt           Batch pretraining and mem-score preparation
-  run_baseline_defenses.sbt        Base and baseline defense experiments
-  run_risk_distill_swmr.sbt        Main RADD defense experiments
-  run_append_nn_attacks.sbt        Append NN-family attacks to existing logs
-  run_lira_eval.sbt                Low-FPR LiRA evaluation
-  run_radd_mechanism.sbt           Mechanism-analysis data extraction
-  run_radd_runtime_overhead.sbt    Runtime-overhead experiments
-  run_radd_kd_weighting.sbt        Distillation-weighting ablation
-  run_risk_distill_ablation.sbt    RADD component ablation
-  run_rd_pruning_way_fig8.sbt      Iterative vs. one-shot pruning study
-  run_rd_structured_fig9.sbt       Structured pruning study
-  run_radd_sparsity_sensitivity.sbt
-  run_radd_window_robustness.sbt
-  run_radd_fig13_attack_robustness.sbt
-
-  plot_defense.py
-  plot_lira.py
-  plot_radd_mechanism.py
-  plot_rd_pruning_way_fig8.py
-  plot_rd_structured_fig9.py
-  plot_radd_sparsity_sensitivity.py
-  plot_radd_window_robustness.py
-  plot_radd_fig13_attack_robustness.py
-  plot_rd_sensitivity.py
 ```
 
 The files with the `.sbt` suffix are SLURM batch scripts. They are ordinary Bash scripts containing `#SBATCH` directives. Before using them on a server, edit the `PROJECT_DIR`, `DATASETS`, `ARCHITECTURES`, and attack settings near the top of each script.
@@ -227,40 +203,6 @@ sbatch run_append_nn_attacks.sbt
 ```
 
 Use this step when earlier logs contain only threshold attacks and SAMIA. It helps avoid recomputing completed defenses while filling in NN, Top3-NN, and Cl-NN attack results.
-
-### 6. Run specialized paper experiments
-
-Submit the corresponding scripts as needed:
-
-```bash
-sbatch run_lira_eval.sbt
-sbatch run_radd_mechanism.sbt
-sbatch run_rd_pruning_way_fig8.sbt
-sbatch run_rd_structured_fig9.sbt
-sbatch run_radd_sparsity_sensitivity.sbt
-sbatch run_radd_window_robustness.sbt
-sbatch run_radd_fig13_attack_robustness.sbt
-sbatch run_radd_kd_weighting.sbt
-sbatch run_risk_distill_ablation.sbt
-sbatch run_rd_sensitivity.sbt
-sbatch run_radd_runtime_overhead.sbt
-```
-
-## Plotting
-
-After synchronizing server logs back to the local machine, generate figures with:
-
-```bash
-python plot_defense.py
-python plot_lira.py
-python plot_radd_mechanism.py
-python plot_rd_pruning_way_fig8.py
-python plot_rd_structured_fig9.py
-python plot_radd_sparsity_sensitivity.py
-python plot_radd_window_robustness.py
-python plot_radd_fig13_attack_robustness.py
-python plot_rd_sensitivity.py
-```
 
 Most plots are saved under:
 
