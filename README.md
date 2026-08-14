@@ -349,7 +349,7 @@ If you use this code, please cite our paper:
 ```bibtex
 @article{radd2026,
   title   = {RADD: Risk-Aware Distillation Defense Against Membership Inference Attacks on Iteratively Pruned Neural Networks},
-  author  = {Shigen Shen and Lanrui Yin and Yizhou Shen and Jingnan Dong and Wenlong Ke and Ruilong Deng and Tian Wang},
+  author  = {},
   journal = {Under Review},
   year    = {2026}
 }
