@@ -1,10 +1,10 @@
-# RADD: Risk-Aware Distillation Defense for Mitigating Membership Leakage During Iterative Neural Network Prunin
+# RADD: Risk-Aware Distillation Defense for Mitigating Membership Leakage During Iterative Neural Network Pruning
 
 This repository contains the code and experiment scripts for our paper:
 
 **RADD: Risk-Aware Distillation Defense for
 Mitigating Membership Leakage During Iterative
-Neural Network Prunin**.
+Neural Network Pruning**.
 
 RADD is a pruning-time privacy defense for iteratively pruned neural networks. It targets a leakage channel that remains in memorization-aware pruning defenses: high-risk training samples can still impose sharp hard-label supervision during recovery fine-tuning. RADD treats the supervision target itself as a defense surface by combining:
 
@@ -350,7 +350,7 @@ If you use this code, please cite our paper:
 
 ```bibtex
 @article{radd2026,
-  title   = {RADD: Risk-Aware Distillation Defense Against Membership Inference Attacks on Iteratively Pruned Neural Networks},
+  title   = {RADD: Risk-Aware Distillation Defense for Mitigating Membership Leakage During Iterative Neural Network Pruning},
   author  = {},
   journal = {Under Review},
   year    = {2026}
